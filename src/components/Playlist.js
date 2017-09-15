@@ -52,13 +52,11 @@ export default class Playlist extends Component {
         <PlaylistItem key={song._id} song={song}/>
       )
     })
-    console.log('this.playlist after: ', this.playlist);
     return (
-      <div className="card-block p-2">
+      <div className="card-block p-2 w-50">
         <form onSubmit={this.handleFetchData}>
           <input className="btn btn-primary btn-lg" type="submit" value="Update playlist" />
         </form>
-        {console.log('this.playlist: ', this.playlist)}
         {playlist}
       </div>
     )

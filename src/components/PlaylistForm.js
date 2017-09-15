@@ -61,11 +61,33 @@ export default class PlaylistForm extends Component {
     })
   }
 
+  addToList = (e) => {
+      e.preventDefault();
+      this.setState({userName: e.target.value, songTitle: e.target.value, songArtist: e.target.value, songNotes: e.target.value});
+      let listItem = JSON.stringify(this.state);
+
+      fetch("https://tiny-lasagna-server.herokuapp.com/collections/playlisting", {
+        method: "POST",
+        body: listItem,
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+      }
+    }
+    ).then(response => {
+      console.log(response, "yay");
+
+    }).catch(err => {
+      console.log(err, "boo!");
+    });
+    this.setState({userName: '', songNotes: '', songArtist: '', songTitle:''});
+  }
+
   render() {
     return (
-      <div className="card-block">
-        <h3>What is your Earworm?</h3>
-        <form onSubmit={this.handleFormSubmit} className="text-left">
+      <div className="card-block w-25 text-left">
+        <h3 className="mb-4">What is your Earworm?</h3>
+        <form onSubmit={this.addToList} className="">
           <div className="form-group">
             <label htmlFor="userName" className="">Username:</label>
             <input onChange={this.handleUsernameChange} className="form-control" name="userName"  type="text" value={this.state.userName} placeholder="Name or username" />
@@ -82,7 +104,7 @@ export default class PlaylistForm extends Component {
             <label htmlFor="songNotes" className="">Notes on the song:</label>
             <textarea onChange={this.handleNoteChange} className="form-control" name="songNotes"  rows="3" type="text" value={this.state.songNotes} placeholder="Notes"/>
           </div>
-          <div className="form-group pull-right">
+          <div className="form-group">
             <input className="btn btn-primary btn-lg" type="submit" value="Submit" />
           </div>
         </form>

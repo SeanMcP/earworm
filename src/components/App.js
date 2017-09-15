@@ -20,8 +20,10 @@ class App extends Component {
     return (
       <div className="App">
         <NavBar />
-        <PlaylistForm />
-        <Playlist />
+        <div className="d-flex">
+          <PlaylistForm />
+          <Playlist />
+        </div>
       </div>
     );
   }
