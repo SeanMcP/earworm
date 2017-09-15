@@ -6,47 +6,60 @@ export default class Playlist extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      username: '',
-      artist: '',
-      title: '',
-      note: '',
-      songs: [
-        {
-          username: 'Sean',
-          artist: 'Queen',
-          title: 'Don\'t Stop Me Now',
-          note: 'Have a good time!'
-        }
-      ]
+      userName: '',
+      songArtist: '',
+      songTitle: '',
+      songNotes: '',
+      songs: []
     }
-    this.playlist = ''
-    this.handlePlaylistSubmit = this.handlePlaylistSubmit.bind(this)
+    this.handleFetchData = this.handleFetchData.bind(this)
   }
-  // let playlist = ''
-  handlePlaylistSubmit(event){
-    console.log('this.playlist before: ', this.playlist);
-    this.playlist = this.state.songs.map((song, i) => {
-      return (
-        <PlaylistItem key={i + 1}/>
-      )
+  handleFetchData(e) {
+    e.preventDefault();
+    fetch('https://tiny-lasagna-server.herokuapp.com/collections/playlisting')
+    .then(results => {
+      return results.json();
     })
-    console.log('this.playlist after: ', this.playlist);
+    .then(data => {
+      this.setState({songs: data});
+    })
   }
+  fetchData = (e) => {
+    e.preventDefault();
+    fetch('https://tiny-lasagna-server.herokuapp.com/collections/playlisting')
+    .then(results => {
+      return results.json();
+    })
+    .then(data => {
+      this.setState({songs: data});
+    })
+  }
+
+  componentWillMount() {
+    fetch('https://tiny-lasagna-server.herokuapp.com/collections/playlisting')
+    .then(results => {
+      return results.json();
+    })
+    .then(data => {
+      this.setState({songs: data});
+      console.log("this.state.songs: ", this.state.songs);
+    })
+  }
+
   render() {
-    console.log('this.playlist before: ', this.playlist);
-    this.playlist = this.state.songs.map((song, i) => {
+    let playlist = this.state.songs.map((song, i) => {
       return (
-        <PlaylistItem key={i + 1}/>
+        <PlaylistItem key={song._id} song={song}/>
       )
     })
     console.log('this.playlist after: ', this.playlist);
     return (
       <div className="card-block p-2">
-        <form onSubmit={this.handlePlaylistSubmit}>
+        <form onSubmit={this.handleFetchData}>
           <input className="btn btn-primary btn-lg" type="submit" value="Update playlist" />
         </form>
         {console.log('this.playlist: ', this.playlist)}
-        {this.playlist}
+        {playlist}
       </div>
     )
   }

@@ -9,18 +9,11 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      username: '',
-      artist: '',
-      title: '',
-      note: '',
-      songs: [
-        {
-          username: 'Sean',
-          artist: 'Queen',
-          title: 'Don\'t Stop Me Now',
-          note: 'Have a good time!'
-        }
-      ]
+      userName: '',
+      songArtist: '',
+      songTitle: '',
+      songNotes: '',
+      songs: []
     }
   }
   render() {
