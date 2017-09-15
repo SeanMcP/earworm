@@ -12,18 +12,8 @@ export default class Playlist extends Component {
       songNotes: '',
       songs: []
     }
-    this.handleFetchData = this.handleFetchData.bind(this)
   }
-  handleFetchData(e) {
-    e.preventDefault();
-    fetch('https://tiny-lasagna-server.herokuapp.com/collections/playlisting')
-    .then(results => {
-      return results.json();
-    })
-    .then(data => {
-      this.setState({songs: data});
-    })
-  }
+  
   fetchData = (e) => {
     e.preventDefault();
     fetch('https://tiny-lasagna-server.herokuapp.com/collections/playlisting')
@@ -54,7 +44,7 @@ export default class Playlist extends Component {
     })
     return (
       <div className="card-block p-2 w-50">
-        <form onSubmit={this.handleFetchData}>
+        <form onSubmit={this.fetchData}>
           <input className="btn btn-primary btn-lg" type="submit" value="Update playlist" />
         </form>
         {playlist}
