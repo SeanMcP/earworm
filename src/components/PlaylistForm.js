@@ -105,7 +105,7 @@ export default class PlaylistForm extends Component {
             <textarea onChange={this.handleNoteChange} className="form-control" name="songNotes"  rows="3" type="text" value={this.state.songNotes} placeholder="Notes"/>
           </div>
           <div className="form-group">
-            <input className="btn btn-primary btn-lg" type="submit" value="Submit" />
+            <input className="btn btn-primary btn-block" type="submit" value="Submit" />
           </div>
         </form>
       </div>

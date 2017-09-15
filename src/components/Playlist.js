@@ -13,7 +13,7 @@ export default class Playlist extends Component {
       songs: []
     }
   }
-  
+
   fetchData = (e) => {
     e.preventDefault();
     fetch('https://tiny-lasagna-server.herokuapp.com/collections/playlisting')
@@ -45,7 +45,7 @@ export default class Playlist extends Component {
     return (
       <div className="card-block p-2 w-50">
         <form onSubmit={this.fetchData}>
-          <input className="btn btn-primary btn-lg" type="submit" value="Update playlist" />
+          <input className="btn btn-primary btn-block w-50 mx-auto" type="submit" value="Update playlist" />
         </form>
         {playlist}
       </div>

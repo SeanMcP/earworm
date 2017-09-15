@@ -2,4 +2,10 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background: linear-gradient(#025AA5, #FF4081);
+}
+.jumbotron {
+  background: #FF4081;
+  border-radius: 0;
+  color: white;
 }
