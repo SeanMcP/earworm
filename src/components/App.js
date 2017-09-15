@@ -3,6 +3,7 @@ import '../styles/App.css';
 
 import NavBar from './NavBar.js'
 import PlaylistForm from './PlaylistForm.js'
+import Playlist from './Playlist.js'
 
 class App extends Component {
   constructor() {
@@ -12,7 +13,14 @@ class App extends Component {
       artist: '',
       title: '',
       note: '',
-      songs: []
+      songs: [
+        {
+          username: 'Sean',
+          artist: 'Queen',
+          title: 'Don\'t Stop Me Now',
+          note: 'Have a good time!'
+        }
+      ]
     }
   }
   render() {
@@ -20,6 +28,7 @@ class App extends Component {
       <div className="App">
         <NavBar />
         <PlaylistForm />
+        <Playlist />
       </div>
     );
   }

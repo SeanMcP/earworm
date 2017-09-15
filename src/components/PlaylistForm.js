@@ -8,7 +8,14 @@ export default class PlaylistForm extends Component {
       artist: '',
       title: '',
       note: '',
-      songs: []
+      songs: [
+        {
+          username: 'Sean',
+          artist: 'Queen',
+          title: 'Don\'t Stop Me Now',
+          note: 'Have a good time!'
+        }
+      ]
     }
 
     this.handleUsernameChange = this.handleUsernameChange.bind(this);
